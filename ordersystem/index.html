@@ -1,93 +1,118 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-Hant">
 <head>
-  <title>線上訂餐系統</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>🍱 線上點餐系統</title>
   <style>
     body {
-      font-family: "Arial", sans-serif;
-      background-color: #f7f7f7;
-      padding: 20px;
-      color: #333;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      background-color: #f2f2f7;
+      color: #1c1c1e;
+      padding: 30px;
+      margin: 0;
     }
 
     h1 {
       text-align: center;
-      color: #444;
+      font-weight: 600;
+      font-size: 28px;
+      color: #000;
+      margin-bottom: 30px;
     }
 
     #menu-container, #order-container {
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      margin-bottom: 30px;
+      background-color: #ffffff;
+      border-radius: 18px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      padding: 24px;
+      margin: 20px auto;
+      max-width: 900px;
     }
 
     #menu {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
     }
 
     .menu-item {
-      background-color: #fefefe;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      padding: 15px;
+      background-color: #fafafa;
+      border-radius: 16px;
+      padding: 20px;
       text-align: center;
-      box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      transition: transform 0.2s ease;
+    }
+
+    .menu-item:hover {
+      transform: scale(1.015);
     }
 
     .menu-item img {
       width: 100%;
-      max-height: 120px;
+      height: 140px;
       object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 10px;
+      border-radius: 12px;
+      margin-bottom: 12px;
     }
 
     .menu-item h3 {
-      margin: 10px 0 5px 0;
+      margin: 8px 0 4px;
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    .menu-item p {
+      color: #8e8e93;
+      margin: 6px 0;
     }
 
     .menu-item input {
       width: 60px;
-      padding: 5px;
+      padding: 6px;
       border: 1px solid #ccc;
-      border-radius: 5px;
-      margin-top: 10px;
+      border-radius: 8px;
+      font-size: 16px;
+      text-align: center;
+      margin-top: 8px;
     }
 
     #order {
-      padding: 10px;
       line-height: 1.6;
+      margin-bottom: 10px;
     }
 
     button {
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: #4caf50;
+      background-color: #34c759;
       color: white;
+      padding: 12px 24px;
       border: none;
-      border-radius: 6px;
+      border-radius: 12px;
+      font-size: 17px;
+      font-weight: 600;
       cursor: pointer;
+      transition: background-color 0.2s ease;
     }
 
     button:hover {
-      background-color: #45a049;
+      background-color: #28a745;
     }
   </style>
 </head>
 <body>
-  <h1>菜單</h1>
-  <div id="menu"></div>
+  <h1>🍱 線上點餐系統</h1>
 
-  <h2>您的訂單</h2>
-  <div id="order"></div>
-  <p>總金額：<span id="total">0</span> 元</p>
-  <button onclick="submitOrder()">送出訂單</button>
-  <button onclick="clearOrder()">清除訂單</button>
+  <div id="menu-container">
+    <h2>菜單</h2>
+    <div id="menu"></div>
+  </div>
+
+  <div id="order-container">
+    <h2>您的訂單</h2>
+    <div id="order"></div>
+    <p>總金額：<span id="total">0</span> 元</p>
+    <button onclick="submitOrder()">送出訂單</button>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>

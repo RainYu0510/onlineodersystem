@@ -1,10 +1,104 @@
-body {
+/* body {
   font-family: sans-serif;
   padding: 20px;
 }
 .menu-item {
   border-radius: 8px;
   margin-bottom: 10px;
-} 
+}  */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  background-color: #f2f2f7;
+  color: #1c1c1e;
+  padding: 30px;
+  margin: 0;
+}
+
+h1 {
+  text-align: center;
+  font-weight: 600;
+  font-size: 28px;
+  color: #000;
+  margin-bottom: 30px;
+}
+
+#menu-container, #order-container {
+  background-color: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  padding: 24px;
+  margin: 20px auto;
+  max-width: 900px;
+}
+
+#menu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+.menu-item {
+  background-color: #fafafa;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  transition: transform 0.2s ease;
+}
+
+.menu-item:hover {
+  transform: scale(1.015);
+}
+
+.menu-item img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.menu-item h3 {
+  margin: 8px 0 4px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.menu-item p {
+  color: #8e8e93;
+  margin: 6px 0;
+}
+
+.menu-item input {
+  width: 60px;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  text-align: center;
+  margin-top: 8px;
+}
+
+#order {
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: #34c759;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 12px;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #28a745;
+}
+
 /*CSS（Cascading Style Sheets，中文叫「階層式樣式表」）是一種用來控制 網頁外觀與排版 的語言。
 簡單來說，HTML 是用來建立網頁的「骨架」， 而 CSS 則是幫它「化妝」或「美化」。*/
