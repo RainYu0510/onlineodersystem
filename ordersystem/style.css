@@ -1,0 +1,10 @@
+body {
+  font-family: sans-serif;
+  padding: 20px;
+}
+.menu-item {
+  border-radius: 8px;
+  margin-bottom: 10px;
+} 
+/*CSS（Cascading Style Sheets，中文叫「階層式樣式表」）是一種用來控制 網頁外觀與排版 的語言。
+簡單來說，HTML 是用來建立網頁的「骨架」， 而 CSS 則是幫它「化妝」或「美化」。*/
