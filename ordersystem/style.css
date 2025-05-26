@@ -1,11 +1,3 @@
-/* body {
-  font-family: sans-serif;
-  padding: 20px;
-}
-.menu-item {
-  border-radius: 8px;
-  margin-bottom: 10px;
-}  */
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
   background-color: #f2f2f7;
@@ -53,10 +45,12 @@ h1 {
 .menu-item img {
   width: 100%;
   height: 140px;
-  object-fit: cover;
+  object-fit: contain;  
   border-radius: 12px;
   margin-bottom: 12px;
+  background-color: #fff; 
 }
+
 
 .menu-item h3 {
   margin: 8px 0 4px;
@@ -99,6 +93,3 @@ button {
 button:hover {
   background-color: #28a745;
 }
-
-/*CSS（Cascading Style Sheets，中文叫「階層式樣式表」）是一種用來控制 網頁外觀與排版 的語言。
-簡單來說，HTML 是用來建立網頁的「骨架」， 而 CSS 則是幫它「化妝」或「美化」。*/

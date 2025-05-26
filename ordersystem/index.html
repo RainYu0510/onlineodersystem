@@ -1,118 +1,43 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>🍱 線上點餐系統</title>
-  <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
-      background-color: #f2f2f7;
-      color: #1c1c1e;
-      padding: 30px;
-      margin: 0;
-    }
-
-    h1 {
-      text-align: center;
-      font-weight: 600;
-      font-size: 28px;
-      color: #000;
-      margin-bottom: 30px;
-    }
-
-    #menu-container, #order-container {
-      background-color: #ffffff;
-      border-radius: 18px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-      padding: 24px;
-      margin: 20px auto;
-      max-width: 900px;
-    }
-
-    #menu {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 24px;
-    }
-
-    .menu-item {
-      background-color: #fafafa;
-      border-radius: 16px;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-      transition: transform 0.2s ease;
-    }
-
-    .menu-item:hover {
-      transform: scale(1.015);
-    }
-
-    .menu-item img {
-      width: 100%;
-      height: 140px;
-      object-fit: cover;
-      border-radius: 12px;
-      margin-bottom: 12px;
-    }
-
-    .menu-item h3 {
-      margin: 8px 0 4px;
-      font-size: 20px;
-      font-weight: 500;
-    }
-
-    .menu-item p {
-      color: #8e8e93;
-      margin: 6px 0;
-    }
-
-    .menu-item input {
-      width: 60px;
-      padding: 6px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 16px;
-      text-align: center;
-      margin-top: 8px;
-    }
-
-    #order {
-      line-height: 1.6;
-      margin-bottom: 10px;
-    }
-
-    button {
-      background-color: #34c759;
-      color: white;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 12px;
-      font-size: 17px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background-color 0.2s ease;
-    }
-
-    button:hover {
-      background-color: #28a745;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <h1>🍱 線上點餐系統</h1>
 
   <div id="menu-container">
     <h2>菜單</h2>
+
+    <!-- 篩選分類 -->
+    <label for="category-select">分類篩選：</label>
+    <select id="category-select">
+      <option value="all">全部</option>
+      <option value="main">主食</option>
+      <option value="drink">飲料</option>
+      <option value="dessert">甜點</option>
+    </select>
+
     <div id="menu"></div>
   </div>
 
   <div id="order-container">
     <h2>您的訂單</h2>
     <div id="order"></div>
+
     <p>總金額：<span id="total">0</span> 元</p>
+
+    <!-- 折扣碼 -->
+    <label for="discount-code">優惠折扣碼：</label>
+    <input type="text" id="discount-code" placeholder="輸入折扣碼" />
+    <button id="apply-discount">套用折扣</button>
+    <p id="discount-message" style="color: red; margin-top: 5px;"></p>
+
     <button onclick="submitOrder()">送出訂單</button>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>

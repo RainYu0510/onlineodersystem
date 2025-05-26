@@ -1,32 +1,34 @@
 const menu = [
-  { id: 1, name: '牛肉飯', price: 100, img: 'images/beef.jpg' },
-  { id: 2, name: '雞排便當', price: 90, img: 'images/chicken.jpg' },
-  { id: 3, name: '咖哩飯', price: 95, img: 'images/curry.jpg' }
+  { id: 1, name: '牛肉飯', price: 100, image: 'images/beef.png', category: 'main' },
+  { id: 2, name: '雞排便當', price: 90, image: 'images/chicken.png', category: 'main' },
+  { id: 3, name: '咖哩飯', price: 95, image: 'images/curry.png', category: 'main' },
+  { id: 4, name: '紅茶', price: 30, image: 'images/tea.png', category: 'drink' },
+  { id: 5, name: '珍珠奶茶', price: 50, image: 'images/bubble_tea.png', category: 'drink' },
+  { id: 6, name: '布丁', price: 40, image: 'images/pudding.png', category: 'dessert' },
 ];
 
-
 const cart = {};
+let discount = 1; // 折扣倍率，1 = 無折扣
 
-function renderMenu() {
-  //const menuDiv = document.getElementById('menu');//畫菜單
-  menu.forEach(item => {//一個一個拿出菜單中的每一項來做事
+function renderMenu(filter = 'all') {
+  const menuDiv = document.getElementById('menu');
+  menuDiv.innerHTML = ''; // 清空舊資料
+
+  const filteredMenu = filter === 'all'
+    ? menu
+    : menu.filter(item => item.category === filter);
+
+  filteredMenu.forEach(item => {
     const div = document.createElement('div');
     div.className = 'menu-item';
     div.innerHTML = `
-      <img src="${item.img}" alt="${item.name}" style="width:150px; height:auto;">
+      <img src="${item.image}" alt="${item.name}" />
       <h3>${item.name}</h3>
       <p>價格：${item.price} 元</p>
-      <input type="number" min="0" value="0" onchange="updateOrder(${item.id}, this.value)">
+      <input type="number" min="0" value="${cart[item.id] || 0}" onchange="updateOrder(${item.id}, this.value)" />
     `;
-    document.getElementById('menu').appendChild(div);
+    menuDiv.appendChild(div);
   });
-}
-function clearOrder() {
-  for (let id in cart) {
-    delete cart[id];
-  }
-  document.querySelectorAll('#menu input').forEach(input => input.value = 0);
-  renderOrder();
 }
 
 function updateOrder(id, quantity) {
@@ -36,6 +38,9 @@ function updateOrder(id, quantity) {
     delete cart[id];
   }
   renderOrder();
+  // 重新渲染菜單以同步數量
+  const categorySelect = document.getElementById('category-select');
+  renderMenu(categorySelect.value);
 }
 
 function renderOrder() {
@@ -52,12 +57,45 @@ function renderOrder() {
     orderDiv.innerHTML += `<p>${item.name} x ${qty} = ${subtotal} 元</p>`;
   }
 
-  totalSpan.textContent = total;
+  // 套用折扣
+  const discountedTotal = Math.round(total * discount);
+  totalSpan.textContent = discountedTotal;
 }
 
 function submitOrder() {
   alert("訂單已送出！");
 }
-// 讓菜單在頁面載入後顯示
-document.addEventListener('DOMContentLoaded', renderMenu);
 
+// 篩選選單事件
+document.getElementById('category-select').addEventListener('change', e => {
+  renderMenu(e.target.value);
+});
+
+// 折扣按鈕事件
+document.getElementById('apply-discount').addEventListener('click', () => {
+  const codeInput = document.getElementById('discount-code');
+  const msg = document.getElementById('discount-message');
+  const code = codeInput.value.trim().toUpperCase();
+
+  // 假設折扣碼只有一組
+  if (code === 'SAVE10') {
+    discount = 0.9;
+    msg.style.color = 'green';
+    msg.textContent = '折扣碼有效！已享有9折優惠';
+  } else if (code === '') {
+    discount = 1;
+    msg.textContent = '';
+  } else {
+    discount = 1;
+    msg.style.color = 'red';
+    msg.textContent = '折扣碼無效';
+  }
+
+  renderOrder();
+});
+
+// 初始載入
+document.addEventListener('DOMContentLoaded', () => {
+  renderMenu();
+  renderOrder();
+});

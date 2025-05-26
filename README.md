@@ -1,1 +1,21 @@
-## 線上點餐系統
+# 🍱 線上點餐系統
+
+這是一個簡單的線上點餐系統，使用原生 HTML、CSS 和 JavaScript 製作，作為初學者練習前端開發的 side project
+
+## 🔧 功能介紹
+
+- 顯示菜單（含圖片、品名、價格）
+- 可輸入每項餐點數量並即時更新訂單
+- 自動計算總金額
+- 支援送出訂單提示
+- 響應式設計，可在電腦與手機上正常顯示
+
+## 📁 專案結構
+
+- /online-ordering
+  ├── index.html # 主頁
+  ├── style.css # 樣式表（美化 UI）
+  ├── script.js # JavaScript 邏輯
+  ├── /images # 放置圖片（如 beef.png、chicken.png 等）
+  └── README.md # 專案說明
+
