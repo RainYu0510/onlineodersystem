@@ -93,3 +93,11 @@ button {
 button:hover {
   background-color: #28a745;
 }
+
+.clear-button {
+  background-color: #ff3b30;
+}
+
+.clear-button:hover {
+  background-color: #e53935;
+}

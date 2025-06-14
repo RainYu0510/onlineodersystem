@@ -71,6 +71,29 @@ document.getElementById('category-select').addEventListener('change', e => {
   renderMenu(e.target.value);
 });
 
+function submitOrder() {
+  if (Object.keys(cart).length === 0) {
+    alert("您尚未選擇任何品項！");
+    return;
+  }
+
+  alert("訂單已送出！");
+  clearOrder(); // 送出後也順便清空
+}
+
+function clearOrder() {
+  // 清空所有資料
+  for (let id in cart) {
+    delete cart[id];
+  }
+  discount = 1;
+  document.getElementById('discount-code').value = '';
+  document.getElementById('discount-message').textContent = '';
+
+  renderOrder();
+  renderMenu(document.getElementById('category-select').value);
+}
+
 // 折扣按鈕事件
 document.getElementById('apply-discount').addEventListener('click', () => {
   const codeInput = document.getElementById('discount-code');
